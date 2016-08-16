@@ -1,2 +1,2 @@
 # leetcode
-learn and practice programming in C 
+just an trial about create branch on the website
