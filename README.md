@@ -1,2 +1,2 @@
 # leetcode
-just an trial about create branch on the website
+this is the repository for storing history of practicing programming
