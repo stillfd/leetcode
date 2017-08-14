@@ -36,6 +36,8 @@ void main(void)
         printq(q);
         printf("\n");
     }
+    enqueue(8, q);printf("\n");
+    printf("q->size is %d\r\n", q->size);
     printf("test dequeue\r\n");
     dequeue(q);
     printq(q);printf("\n");
@@ -95,7 +97,7 @@ void makeempty(queue q)
 {
     q->size = 0;
     q->front = 1;
-    q->rear = 0;
+    q->rear = 1;
     return;
 }
 
