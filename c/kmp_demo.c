@@ -1,14 +1,16 @@
 #include<stdio.h>
+#include<string.h>
 typedef char* string;
 
-void GetNext(string s, int* next)
+void GetNext(char* s, int* next)
 {
-	int i = 1; 
-	int j = 0;
-	next[1] = 0;
-	while(i <s[0])
+	int n = strlen(s);
+	int i = 0; 
+	int j = -1;
+	next[0] = -1;
+	while(i < n)
 	{
-		if(0 == j || s[i] == s[j])
+		if(-1 == j || s[i] == s[j])
 		{
 			i++;
 			j++;
@@ -21,14 +23,17 @@ void GetNext(string s, int* next)
 	}
 }
 
-int kmp(string s, string t)
+int kmp(char* s, char* t)
 {
+	int ls = strlen(s);
+	int lt = strlen(t);
 	int next[255] = {0};
 	GetNext(t, next);
-	int i = 0, j = 0;
-	while(i <= s[0] && j <= t[0])
+	int i = 0, j = -1;
+	printf("j >> %d, t len %d\n", strlen(s), strlen(t));
+	while(i < ls && j < lt)
 	{
-		if(j == 0|| s[i] == s[j])
+		if(j == -1|| s[i] == s[j])
 		{
 			i++;
 			j++;
@@ -37,9 +42,10 @@ int kmp(string s, string t)
 		{
 			j = next[j];
 		}
+		printf("kmpserach >> j >> %d\n", j);
 	}
-	printf("j >> %d, t len %d\n", j, t[0]);
-	if(j > t[0])
+	printf("j >> %d, t len %d\n", j, strlen(t));
+	if(j == strlen(t))
 		return 1;
 	else
 		return 0; 
@@ -47,14 +53,12 @@ int kmp(string s, string t)
 
 int main(void)
 {
-	char s[255] = " ababababac";
-	s[0] = 10;
-	char t[255] = " ababac";
-	t[0] = 6;
-	int i = 1;
+	char* s = "ababababac\0";
+	char* t = "ababac\0";
+	int i = 0;
 	int next[25];
 	GetNext(t,next);
-	for(;i<= t[0]; i++)
+	for(;i< strlen(t); i++)
 	{
 		printf("%d\n",next[i]);
 	}
