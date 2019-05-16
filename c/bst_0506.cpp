@@ -75,6 +75,21 @@ void preOrder(BiTree T)
 		p = p->right;
 	}
 }
+void preOrder2(BiTree T)
+{
+	BiTree p;
+	p = T;
+	stack<BiTree> s;
+	s.push(T);
+	while(!s.empty())
+	{
+		p = s.top();s.pop();
+		printf("%c",p->val);
+		if(p->right) s.push(p->right);
+		if(p->left) s.push(p->left);
+	}
+	return;
+}
 void inOrder(BiTree T)
 {
 	BiTree p;
@@ -141,6 +156,9 @@ int main()
 	printf("\n");
 	printf("Display BST, preorder, iterative\n");
 	preOrder(T);
+	printf("\n");
+	printf("Display BST, preorder2, iterative\n");
+	preOrder2(T);
 	printf("\n");
 	printf("Display BST, inorder, iterative\n");
 	inOrder(T);
